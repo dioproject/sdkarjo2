@@ -32,7 +32,7 @@ $currentPage = $_SERVER['REQUEST_URI'] ?? '';
         }
     }
     </script>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/../assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body class="bg-background text-foreground">
     <div class="flex min-h-screen">

@@ -1,10 +1,26 @@
 <?php
+// ============================================================
+// Deployment Config - Sesuaikan untuk server Anda
+// ============================================================
+
+// Base URL aplikasi (kosongkan jika deploy di root domain)
+// Contoh: '' untuk example.com, '/school' untuk example.com/school
+define('BASE_URL', getenv('APP_BASE_URL') ?: '');
+
+// Database SQLite
 define('DB_PATH', __DIR__ . '/data/database.sqlite');
-define('JWT_SECRET', getenv('JWT_SECRET') ?: 'default-secret-change-me');
+
+// JWT Secret - GANTI ini di production!
+define('JWT_SECRET', getenv('JWT_SECRET') ?: 'sdkarjo2-change-this-secret-key-in-production');
 define('JWT_EXPIRY', 60 * 60 * 24 * 7); // 7 days
 define('COOKIE_NAME', 'admin-token');
+
+// Upload directory (harus writable oleh web server)
 define('UPLOAD_DIR', __DIR__ . '/public/uploads');
-define('BASE_URL', '/sdkarjo2/php/public');
+
+// ============================================================
+// School Profile Data
+// ============================================================
 
 $SCHOOL_PROFILE = [
     'name' => 'SD Negeri Karangrejo 02',

@@ -30,7 +30,7 @@ global $SCHOOL_PROFILE;
         }
     }
     </script>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/../assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body class="bg-background text-foreground">
     <header class="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
