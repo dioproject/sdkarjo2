@@ -1,0 +1,58 @@
+# =============================================================================
+# .dockerignore untuk Plan C (runtime-only image)
+# Build artifacts yang sudah di-build di host harus DIIZINKAN masuk image.
+# =============================================================================
+
+# Source code & dev files (tidak perlu di runtime)
+.git
+.github
+.vscode
+.idea
+*.md
+src
+tsconfig.json
+next.config.mjs
+postcss.config.js
+tailwind.config.ts
+next-env.d.ts
+package.json
+package-lock.json
+yarn.lock
+bun.lock
+prisma/seed.ts
+prisma/migrations
+prisma.config.ts
+scripts
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+
+# Env files (gunakan env runtime dari docker-compose)
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Exclude SEMUA node_modules KECUALI prisma client + adapter
+node_modules/**
+!node_modules/.prisma
+!node_modules/.prisma/**
+!node_modules/@prisma
+!node_modules/@prisma/**
+
+# Exclude SEMUA .next KECUALI standalone & static (hasil build)
+.next/**
+!.next/standalone
+!.next/standalone/**
+!.next/static
+!.next/static/**
+
+# Uploads runtime (mount sebagai volume di compose)
+public/uploads/**
+!public/uploads/**/.gitkeep
+
+# Docker meta (tidak perlu di image)
+Dockerfile
+docker-compose.yml
+.dockerignore

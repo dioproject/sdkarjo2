@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AnnouncementCategory {
+  Akademik
+  Kegiatan
+  Prestasi
+  Informasi
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model Announcement {
+  id           String               @id @default(uuid())
+  title        String
+  slug         String               @unique
+  excerpt      String
+  content      Json
+  category     AnnouncementCategory @default(Informasi)
+  publishedAt  DateTime             @default(now()) @map("published_at")
+  isPublished  Boolean              @default(false) @map("is_published")
+  authorName   String?              @map("author_name")
+  createdAt    DateTime             @default(now()) @map("created_at")
+  updatedAt    DateTime             @default(now()) @updatedAt @map("updated_at")
+
+  @@map("announcements")
+  @@index([publishedAt], map: "announcements_published_at_idx")
+  @@index([category], map: "announcements_category_idx")
+}
+
+
+model Teacher {
+  id        String   @id @default(uuid())
+  name      String
+  role      String
+  photo     String   @default("")
+  order     Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("teachers")
+  @@index([order], map: "teachers_order_idx")
+}
+
+
+model Gallery {
+  id        String   @id @default(uuid())
+  title     String
+  image     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("gallery")
+}
+
+
+model SiteConfig {
+  id    String @id @default("main")
+  visi  String @default("")
+  misi  Json   @default("[]")
+
+  @@map("site_config")
+}
+
+model Achievement {
+  id        String   @id @default(uuid())
+  title     String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("achievements")
+}
+
+
+model Stat {
+  id    String @id
+  label String
+  value String
+  icon  String @default("UsersRound")
+
+  @@map("stats")
+}
