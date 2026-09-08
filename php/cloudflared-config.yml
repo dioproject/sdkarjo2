@@ -1,0 +1,9 @@
+tunnel: 7f91a3c1-9025-468e-903b-2bd0a03410fb
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  - hostname: www.sdnkarangrejo02.web.id
+    service: http://sdkarjo2-php:7723
+  - hostname: sdnkarangrejo02.web.id
+    service: http://sdkarjo2-php:7723
+  - service: http_status:404

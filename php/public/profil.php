@@ -10,7 +10,7 @@ $pageTitle = 'Profil Sekolah';
 require_once __DIR__ . '/../includes/layout_header.php';
 ?>
 
-<main class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+<main class="flex-1 mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
     <p class="text-sm font-semibold uppercase tracking-widest text-primary">Profil Sekolah</p>
     <h1 class="mt-3 text-4xl font-bold"><?= esc($SCHOOL_PROFILE['name']) ?></h1>
 

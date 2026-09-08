@@ -20,7 +20,7 @@ if ($slug) {
     $pageTitle = $announcement['title'];
     require_once __DIR__ . '/../includes/layout_header.php';
     ?>
-    <main class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <main class="flex-1 mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
         <a href="<?= BASE_URL ?>/pengumuman.php" class="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
             Kembali ke Pengumuman
@@ -56,7 +56,7 @@ if ($slug) {
     $pageTitle = 'Pengumuman Sekolah';
     require_once __DIR__ . '/../includes/layout_header.php';
     ?>
-    <main class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <main class="flex-1 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="mb-8">
             <p class="text-sm font-semibold uppercase tracking-widest text-primary">Berita dan Informasi</p>
             <h1 class="mt-3 text-4xl font-bold">Pengumuman Sekolah</h1>

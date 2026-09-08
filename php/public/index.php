@@ -37,7 +37,7 @@ $pageTitle = $SCHOOL_PROFILE['name'];
 require_once __DIR__ . '/../includes/layout_header.php';
 ?>
 
-<main>
+<main class="flex-1">
     <!-- Hero Section -->
     <section class="relative overflow-hidden bg-primary text-primary-foreground">
         <div class="absolute inset-0">

@@ -1,0 +1,27 @@
+services:
+  sdkarjo2:
+    build: .
+    container_name: sdkarjo2-php
+    restart: unless-stopped
+    expose:
+      - '7723'
+    volumes:
+      - ./data:/var/www/sdkarjo2/data
+      - ./public/uploads:/var/www/sdkarjo2/public/uploads
+    networks:
+      - proxy
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: sdkarjo2-tunnel
+    restart: unless-stopped
+    command: tunnel --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared-config.yml:/etc/cloudflared/config.yml:ro
+      - ./credentials.json:/etc/cloudflared/credentials.json:ro
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

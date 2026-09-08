@@ -52,9 +52,14 @@ $currentPage = $_SERVER['REQUEST_URI'] ?? '';
                     ['href' => '/admin/prestasi.php', 'label' => 'Prestasi', 'icon' => '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>'],
                     ['href' => '/admin/statistik.php', 'label' => 'Statistik', 'icon' => '<line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/>'],
                 ];
+                $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+                $isAdminDashboard = str_ends_with($scriptName, '/admin/index.php') || rtrim($currentPage, '/') === '/admin';
                 foreach ($adminNav as $item):
-                    $active = str_contains($currentPage, $item['href']) && $item['href'] !== '/admin/' ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-secondary hover:text-foreground';
-                    if ($item['href'] === '/admin/' && $currentPage === '/admin/' . basename($_SERVER['SCRIPT_NAME'])) $active = 'bg-secondary text-foreground';
+                    if ($item['href'] === '/admin/') {
+                        $active = $isAdminDashboard ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-secondary hover:text-foreground';
+                    } else {
+                        $active = str_contains($currentPage, $item['href']) ? 'bg-secondary text-foreground' : 'text-muted-foreground hover:bg-secondary hover:text-foreground';
+                    }
                 ?>
                 <a href="<?= BASE_URL . $item['href'] ?>" class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium <?= $active ?>">
                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?= $item['icon'] ?></svg>
